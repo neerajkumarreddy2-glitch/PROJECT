@@ -1,0 +1,49 @@
+/* Extra styles for portal cards and animations */
+
+.app-card {
+    @apply relative bg-slate-900/60 border border-slate-800 rounded-2xl p-4 text-left overflow-hidden cursor-pointer transition transform hover:-translate-y-1 hover:border-cyan-400/60;
+}
+
+.app-card::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: conic-gradient(from 0deg, #22d3ee, #6366f1, #ec4899, #22d3ee);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.app-card-inner {
+    position: relative;
+    z-index: 10;
+}
+
+.app-card:hover::before {
+    opacity: 0.25;
+}
+
+.app-section {
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Chat scroll style */
+#chatWindow::-webkit-scrollbar {
+    width: 4px;
+}
+
+#chatWindow::-webkit-scrollbar-thumb {
+    background-color: #64748b;
+    border-radius: 999px;
+}

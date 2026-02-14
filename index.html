@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Future Dev Portal</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="styles/custom.css" />
+</head>
+
+<body class="bg-slate-950 text-slate-100 font-sans">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 via-indigo-500 to-pink-500 animate-pulse">
+                </div>
+                <span class="font-semibold text-lg tracking-wide">Future Dev Portal</span>
+            </div>
+            <ul class="flex gap-4 text-sm">
+                <li><button class="nav-link text-slate-300 hover:text-cyan-400" data-target="home">Home</button></li>
+                <li><button class="nav-link text-slate-300 hover:text-cyan-400" data-target="apps">Apps</button></li>
+                <li><button class="nav-link text-slate-300 hover:text-cyan-400" data-target="about">About</button></li>
+                <li><button class="nav-link text-slate-300 hover:text-cyan-400" data-target="contact">Contact</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-16">
+        <!-- HOME -->
+        <section id="home" class="min-h-[80vh] flex flex-col justify-center gap-8">
+            <div>
+                <p class="text-sm uppercase tracking-[0.25em] text-cyan-400 mb-3">
+                    Welcome, Developer
+                </p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+                    All your <span class="text-cyan-400">Anime</span>,
+                    <span class="text-indigo-400">AI</span>, and
+                    <span class="text-pink-400">Dev tools</span>
+                    in one futuristic portal.
+                </h1>
+                <p class="mt-4 text-slate-300 max-w-xl">
+                    Explore hubs for Anime, NxtWave, ChatGPT‑style AI, Comet streaks, VS Code UI, and YouTube —
+                    all inside a single interactive web experience.
+                </p>
+            </div>
+
+            <div class="flex gap-4">
+                <button id="enterPortalBtn"
+                    class="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-500 text-sm font-medium hover:from-cyan-400 hover:to-indigo-400 transition shadow-lg shadow-cyan-500/30">
+                    Enter Portal
+                </button>
+                <button
+                    class="px-6 py-3 rounded-full border border-slate-600 text-sm hover:border-cyan-400 hover:text-cyan-300 transition"
+                    data-target="apps">
+                    View Apps
+                </button>
+            </div>
+        </section>
+
+        <!-- APPS (PORTAL SCREEN) -->
+        <section id="apps" class="mt-16">
+            <h2 class="text-2xl font-semibold mb-2">Portal Apps</h2>
+            <p class="text-slate-400 mb-6 text-sm">
+                Click an app to open its hub. Use the top navigation to move around the portal.
+            </p>
+
+            <div class="grid gap-6 md:grid-cols-3">
+                <!-- Anime Hub card -->
+                <button class="app-card" data-app="anime">
+                    <div class="app-card-inner">
+                        <h3 class="text-lg font-semibold mb-1">Anime Hub</h3>
+                        <p class="text-xs text-slate-300">
+                            Discover anime cards, genres, and a random pick of the day.
+                        </p>
+                    </div>
+                </button>
+
+                <!-- NxtWave Hub -->
+                <button class="app-card" data-app="nxtwave">
+                    <div class="app-card-inner">
+                        <h3 class="text-lg font-semibold mb-1">NxtWave Hub</h3>
+                        <p class="text-xs text-slate-300">
+                            View daily tasks, upcoming assessments, and progress.
+                        </p>
+                    </div>
+                </button>
+
+                <!-- AI Chat Hub -->
+                <button class="app-card" data-app="ai">
+                    <div class="app-card-inner">
+                        <h3 class="text-lg font-semibold mb-1">AI Chat Hub</h3>
+                        <p class="text-xs text-slate-300">
+                            Fake ChatGPT‑style chat inside your portal.
+                        </p>
+                    </div>
+                </button>
+
+                <!-- Comet / Streaks -->
+                <button class="app-card" data-app="comet">
+                    <div class="app-card-inner">
+                        <h3 class="text-lg font-semibold mb-1">Comet Streaks</h3>
+                        <p class="text-xs text-slate-300">
+                            Track coding streaks with a simple streak board.
+                        </p>
+                    </div>
+                </button>
+
+                <!-- VS Code Hub -->
+                <button class="app-card" data-app="vscode">
+                    <div class="app-card-inner">
+                        <h3 class="text-lg font-semibold mb-1">VS Code Hub</h3>
+                        <p class="text-xs text-slate-300">
+                            Switch between fake files in a code editor UI.
+                        </p>
+                    </div>
+                </button>
+
+                <!-- YouTube Hub -->
+                <button class="app-card" data-app="youtube">
+                    <div class="app-card-inner">
+                        <h3 class="text-lg font-semibold mb-1">YouTube Hub</h3>
+                        <p class="text-xs text-slate-300">
+                            Save favorite channels and search video cards.
+                        </p>
+                    </div>
+                </button>
+            </div>
+
+            <!-- ACTIVE APP AREA -->
+            <div id="activeAppContainer" class="mt-10">
+                <!-- Anime Hub -->
+                <section id="animeHub" class="app-section hidden">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Anime Hub</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="animeFilter"
+                                class="bg-slate-900 border border-slate-700 text-xs px-2 py-1 rounded">
+                                <option value="all">All genres</option>
+                                <option value="action">Action</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="slice">Slice of Life</option>
+                            </select>
+                            <button id="randomAnimeBtn"
+                                class="text-xs px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30">
+                                Random anime of the day
+                            </button>
+                        </div>
+                    </div>
+                    <div id="animeCards" class="grid gap-4 sm:grid-cols-2 md:grid-cols-3"></div>
+                    <p id="animeHighlight" class="mt-4 text-sm text-cyan-300 hidden"></p>
+                </section>
+
+                <!-- NxtWave Hub -->
+                <section id="nxtwaveHub" class="app-section hidden">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">NxtWave Hub</h3>
+                        <button id="addTaskBtn"
+                            class="text-xs px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 hover:bg-indigo-500/30">
+                            Add task
+                        </button>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+                            <h4 class="font-semibold text-sm mb-2">Today’s Tasks</h4>
+                            <ul id="todayTasks" class="space-y-1 text-xs"></ul>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+                            <h4 class="font-semibold text-sm mb-2">Upcoming Assessments</h4>
+                            <ul id="upcomingAssessments" class="space-y-1 text-xs"></ul>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+                            <h4 class="font-semibold text-sm mb-2">Progress</h4>
+                            <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                <div id="progressBar" class="bg-gradient-to-r from-cyan-400 to-pink-500 h-2 w-1/3">
+                                </div>
+                            </div>
+                            <p id="progressText" class="text-xs text-slate-300 mt-2"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Chat Hub -->
+                <section id="aiHub" class="app-section hidden">
+                    <h3 class="text-xl font-semibold mb-4">AI Chat Hub</h3>
+                    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 flex flex-col h-80">
+                        <div id="chatWindow" class="flex-1 overflow-y-auto space-y-3 text-xs pr-2"></div>
+                        <form id="chatForm" class="mt-3 flex gap-2">
+                            <input id="chatInput" type="text" placeholder="Ask your AI assistant..."
+                                class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs outline-none focus:border-cyan-400" />
+                            <button type="submit"
+                                class="px-4 py-2 rounded-lg bg-cyan-500 text-slate-950 text-xs font-semibold hover:bg-cyan-400">Send</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Comet / Streaks Hub -->
+                <section id="cometHub" class="app-section hidden">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Comet Streaks</h3>
+                        <button id="markTodayBtn"
+                            class="text-xs px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/40 hover:bg-pink-500/30">
+                            Mark today as completed
+                        </button>
+                    </div>
+                    <p class="text-xs text-slate-300 mb-3">
+                        Mark days when you code; build a streak like a GitHub contributions chart.
+                    </p>
+                    <div id="streakGrid" class="grid grid-cols-7 gap-1 max-w-md"></div>
+                    <p id="streakInfo" class="mt-3 text-xs text-pink-300"></p>
+                </section>
+
+                <!-- VS Code Hub -->
+                <section id="vscodeHub" class="app-section hidden">
+                    <h3 class="text-xl font-semibold mb-4">VS Code Hub</h3>
+                    <div class="bg-[#0f172a] rounded-xl border border-slate-800 overflow-hidden text-xs">
+                        <div class="flex items-center justify-between px-3 py-2 bg-slate-900 border-b border-slate-800">
+                            <div class="flex gap-1">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                            </div>
+                            <div class="text-slate-300 text-[10px]">FutureDevPortal — VS Code</div>
+                        </div>
+
+                        <div class="flex">
+                            <!-- Sidebar -->
+                            <aside class="w-32 bg-slate-900 border-r border-slate-800 p-2 space-y-1">
+                                <button class="file-tab w-full text-left px-2 py-1 rounded hover:bg-slate-800"
+                                    data-file="portal.js">portal.js</button>
+                                <button class="file-tab w-full text-left px-2 py-1 rounded hover:bg-slate-800"
+                                    data-file="anime.js">anime.js</button>
+                                <button class="file-tab w-full text-left px-2 py-1 rounded hover:bg-slate-800"
+                                    data-file="aiHub.js">aiHub.js</button>
+                            </aside>
+                            <!-- Editor -->
+                            <div class="flex-1 p-3 font-mono text-[11px] leading-relaxed bg-slate-950" id="codeEditor">
+                                <!-- code text injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- YouTube Hub -->
+                <section id="youtubeHub" class="app-section hidden">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">YouTube Hub</h3>
+                        <input id="videoSearch" type="text" placeholder="Search videos..."
+                            class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs outline-none focus:border-emerald-400" />
+                    </div>
+                    <div id="videoCards" class="grid gap-4 sm:grid-cols-2 md:grid-cols-3"></div>
+                </section>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="mt-20">
+            <h2 class="text-2xl font-semibold mb-2">About this Portal</h2>
+            <p class="text-sm text-slate-300 max-w-2xl">
+                This is a single‑page, JavaScript‑heavy portal created using HTML, Tailwind CSS, and vanilla JS.
+                It simulates multiple apps (Anime, NxtWave, AI, Comet, VS Code, YouTube) in one futuristic interface.
+            </p>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="mt-16 mb-10">
+            <h2 class="text-2xl font-semibold mb-2">Contact</h2>
+            <p class="text-sm text-slate-300 mb-4">
+                Simple front‑end‑only form (no backend). You can extend it later with real APIs.
+            </p>
+            <form id="contactForm" class="max-w-md space-y-3">
+                <div>
+                    <label class="block text-xs mb-1">Name</label>
+                    <input id="contactName" type="text"
+                        class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs outline-none focus:border-cyan-400" />
+                </div>
+                <div>
+                    <label class="block text-xs mb-1">Email</label>
+                    <input id="contactEmail" type="email"
+                        class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs outline-none focus:border-cyan-400" />
+                </div>
+                <div>
+                    <label class="block text-xs mb-1">Message</label>
+                    <textarea id="contactMessage" rows="3"
+                        class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs outline-none focus:border-cyan-400"></textarea>
+                </div>
+                <button type="submit"
+                    class="px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-pink-500 text-xs font-semibold text-slate-950 hover:from-cyan-400 hover:to-pink-400">
+                    Send Message
+                </button>
+                <p id="contactStatus" class="text-xs mt-1"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-800 py-4 text-center text-[11px] text-slate-500">
+        Future Dev Portal • Built with HTML, Tailwind CSS, and JavaScript.
+    </footer>
+
+    <!-- Main JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
